@@ -1,12 +1,9 @@
-const fs = require('fs');
-fs.writeFileSync('key.json', process.env.GOOGLE_CREDENTIALS_JSON);
 
-const automl = require('@google-cloud/automl');
 
-const client = new automl.PredictionServiceClient();
-const modelFullId = client.modelPath('bike-share-1517478720061', 'us-central1', 'TBL5065903067954675712')
+const client = require('./create-client');
 
 const getAutoMLPrediction = async (stationAddress, timeStamp) => {
+    const modelFullId = client.modelPath('bike-share-1517478720061', 'us-central1', 'TBL5065903067954675712')
     const response = await client.predict({
         name: modelFullId,
         params: {},
@@ -23,7 +20,6 @@ const getAutoMLPrediction = async (stationAddress, timeStamp) => {
             }
         }
     });
-    
     return response[0].payload[0].tables.value.numberValue;
 }
 

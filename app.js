@@ -12,6 +12,7 @@ const totalMinutesAfterMidnight = (hours, minutes) => {
 const getValuesFromTimestamp = date => {
     const dayOfWeek = date.getUTCDay();
     const timeInMinutes = totalMinutesAfterMidnight(date.getUTCHours(), date.getUTCMinutes());
+    
     return { dayOfWeek, timeInMinutes };
 }
 

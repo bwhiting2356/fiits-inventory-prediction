@@ -2,8 +2,8 @@
 
 const client = require('./create-client');
 
-const getAutoMLPrediction = async (stationAddress, timeStamp) => {
-    const modelFullId = client.modelPath('bike-share-1517478720061', 'us-central1', 'TBL5065903067954675712')
+const getAutoMLPrediction = async (stationAddress, dayOfWeek, timeInMinutes) => {
+    const modelFullId = client.modelPath('bike-share-1517478720061', 'us-central1', 'TBL8481250066617597952')
     const response = await client.predict({
         name: modelFullId,
         params: {},
@@ -11,11 +11,13 @@ const getAutoMLPrediction = async (stationAddress, timeStamp) => {
             row: {
                 values: [
                     { stringValue: stationAddress},
-                    { stringValue: timeStamp }
+                    { stringValue: dayOfWeek },
+                    { stringValue: timeInMinutes}
                 ],
                 columnSpecIds: [
-                    "3717477400812978176",
-                    "835173639295860736"
+                    "8434276730855751680",
+                    "9010737483159175168",
+                    "4687281840883499008"
                 ]
             }
         }

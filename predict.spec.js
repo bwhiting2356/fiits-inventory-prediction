@@ -23,7 +23,7 @@ const getAutoMLPrediction = require('./predict');
 
 describe('inventory prediction tests', () => {
     it('should make a call to the AutoML client with the timestamp and station address', async () => {
-        const predictedInventory = await getAutoMLPrediction('123 Main Street', '1573854656');
+        const predictedInventory = await getAutoMLPrediction('123 Main Street', '1', '310');
         expect(mockPredict).toHaveBeenCalledWith({
             name: 'mock/path',
             params: {},
@@ -31,11 +31,13 @@ describe('inventory prediction tests', () => {
                 row: {
                     values: [
                         { stringValue: '123 Main Street'},
-                        { stringValue: '1573854656' }
+                        { stringValue: '1' },
+                        { stringValue: '310' }
                     ],
                     columnSpecIds: [
-                        "3717477400812978176",
-                        "835173639295860736"
+                        "8434276730855751680",
+                        "9010737483159175168",
+                        "4687281840883499008"
                     ]
                 }
             }
